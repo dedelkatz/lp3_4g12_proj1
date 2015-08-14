@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author andre
+ * @author andree
  */
 public class FrontController extends HttpServlet {
     private String command;
