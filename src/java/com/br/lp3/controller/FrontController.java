@@ -16,8 +16,9 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author andree
+ * @author andre
  */
+
 public class FrontController extends HttpServlet {
     private String command;
     private String username;
@@ -38,10 +39,19 @@ public class FrontController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             if(command.startsWith("login")){
-                
+
                 if(command.endsWith("login")){
-                    //AÇÕES DE LOGIN
-                }
+                    //ACOES DE LOGIN
+                    LoginManager lm = new LoginManager(username,password);
+                    boolean result = lm.authorize();
+                    if(result){
+                        RequestDispatcher rd = request.getRequestDispatcher("/home.jsp");
+                        rd.forward(request, response);
+                    }
+                    else{
+                        out.println("You shall not pass!");
+                    }
+                }                
             }
             
             
